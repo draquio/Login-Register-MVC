@@ -1,0 +1,39 @@
+﻿@model LoginProject.ViewModels.LoginVM;
+@{
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    Iniciar Sesión
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Auth" asp-action="Login" method="post">
+                        <input class="form-control mb-3" type="text" placeholder="Username" required asp-for="Username" />
+                        <input class="form-control mb-3" type="password" placeholder="Password" required asp-for="Password" />
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+                        </div>
+                        @if (ViewData["Message"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["Message"]
+                            </div>
+                        }
+                        ¿No tienes cuenta? <a asp-controller="Auth" asp-action="Register">Regístrate</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
